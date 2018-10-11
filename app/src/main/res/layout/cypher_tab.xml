@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvInput"
+        android:layout_width="330dp"
+        android:layout_height="117dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="92dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnDescifrar"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvInput"
+        android:layout_centerVertical="true"
+        android:text="Cifrar" />
+
+    <EditText
+        android:id="@+id/etNivel"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_alignEnd="@+id/tvOutput"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tvOutput"
+        android:layout_width="323dp"
+        android:layout_height="181dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnReadFile"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="Buscar documento" />
+</RelativeLayout>

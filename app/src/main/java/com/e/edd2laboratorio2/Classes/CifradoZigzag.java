@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CifradoZigzag {
-    
+
     int cont = 0;
     int row = -1,col = -1;
     boolean flag = true;
