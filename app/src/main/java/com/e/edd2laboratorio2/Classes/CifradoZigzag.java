@@ -19,6 +19,81 @@ public class CifradoZigzag {
     String crestas = "", bases = "";
     ArrayList<String> bloques = new ArrayList();
 
+    public String Descifrar(String phrase, int nivel) {
+        StringBuilder result = new StringBuilder();
+        StringBuilder finalResult = new StringBuilder();
+        bloques = new ArrayList();
+        int longitud = phrase.length();
+        sizeOlas = (nivel*2) -2;
+        cantOlas = (int) Math.ceil((double)longitud/(double)sizeOlas);
+        sizeBloque = 2 * cantOlas;
+        getCrestas(phrase, cantOlas);
+        getBases(phrase,cantOlas);
+        getComplemento(phrase, cantOlas, sizeBloque);
+        int count = 0;
+
+        for (int i = 0; i < cantOlas; i++) {
+            result.append(String.valueOf(crestas.charAt(i)));
+            for (int j = 0; j < bloques.size(); j++) {
+                String word = bloques.get(j);
+                result.append(String.valueOf(word.charAt(count)));
+            }
+            result.append(String.valueOf(bases.charAt(i)));
+            count++;
+            for (int j = bloques.size()-1; j > -1; j--) {
+                String word = bloques.get(j);
+                result.append(String.valueOf(word.charAt(count)));
+            }
+            count++;
+        }
+
+        for (int i = 0; i < result.length(); i++) {
+            String letra = String.valueOf(result.charAt(i));
+            if(!letra.equals("@")) {
+                finalResult.append(letra);
+            }
+        }
+
+        return finalResult.toString();
+    }
+
+    private void getCrestas(String word, int cant) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < cant; i++) {
+            result.append(String.valueOf(word.charAt(i)));
+        }
+        crestas = result.toString();
+    }
+
+    private void getBases(String word, int cant) {
+        StringBuilder result = new StringBuilder();
+        int inicio = word.length() - cant;
+        for (int i = inicio; i < word.length(); i++) {
+            result.append(String.valueOf(word.charAt(i)));
+        }
+        bases = result.toString();
+    }
+
+    private void getComplemento(String word, int cb, int cant) {
+        StringBuilder result = new StringBuilder();
+        StringBuilder cadena = new StringBuilder();
+
+        for (int i =cb; i < word.length()- cb; i++) {
+            result.append(String.valueOf(word.charAt(i)));
+        }
+
+        int start = 0, end = cant;
+        int vueltas = result.length() / cant;
+
+        for (int i = 0; i < vueltas; i++) {
+            cadena.append(result.substring(start, end));
+            start = end;
+            end = end + cant;
+            bloques.add(cadena.toString());
+            cadena.setLength(0);
+        }
+    }
+
     public String Cifrar(String phrase, int nivel, String fileName) {
 
         StringBuilder result = new StringBuilder();
