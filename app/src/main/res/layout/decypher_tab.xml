@@ -7,11 +7,11 @@
 
     <TextView
         android:id="@+id/tViewInput"
-        android:layout_width="330dp"
-        android:layout_height="117dp"
+        android:layout_width="331dp"
+        android:layout_height="70dp"
+        android:layout_alignEnd="@+id/eTextNivel"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="132dp"
         android:text="TextView" />
 
     <Button
