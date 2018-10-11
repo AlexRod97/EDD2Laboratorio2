@@ -26,11 +26,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class CypherFragment extends Fragment {
-    private static final String TAG = "CypherFragment";
+public class DecypherFragment extends Fragment {
+    private static final String TAG = "DecypherFragment";
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
-    Button btnOpenFile, btnCifrar;
+    Button btnOpenFile, btnDescifrar;
     TextView tvInput, tvOutput;
     EditText etNivel;
     String mainData,path;
@@ -39,17 +39,15 @@ public class CypherFragment extends Fragment {
     String name;
     CifradoZigzag zigzag = new  CifradoZigzag();
 
-    @Nullable
-    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.cypher_tab, container, false);
-        btnOpenFile = (Button)view.findViewById(R.id.btnReadFile);
-        btnCifrar = (Button)view.findViewById(R.id.btnDescifrar);
+        View view = inflater.inflate(R.layout.decypher_tab, container, false);
+        btnOpenFile = (Button)view.findViewById(R.id.btnOpenFile);
+        btnDescifrar = (Button)view.findViewById(R.id.btnDescifrar);
         tvInput = (TextView)view.findViewById(R.id.tViewInput);
         tvOutput = (TextView)view.findViewById(R.id.tViewOutput);
-        etNivel = (EditText)view.findViewById(R.id.etNivel);
+        etNivel = (EditText)view.findViewById(R.id.eTextNivel);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST_STORAGE);
         }
@@ -66,14 +64,14 @@ public class CypherFragment extends Fragment {
             }
         });
 
-        btnCifrar.setOnClickListener(new View.OnClickListener() {
+        btnDescifrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     nivel = Integer.valueOf(String.valueOf(etNivel.getText()));
                     name = File.getName();
                     name = name.substring(0,name.indexOf("."));
-                    tvOutput.setText(zigzag.Cifrar(mainData,nivel, name));
+                    tvOutput.setText(zigzag.Descifrar(mainData,nivel));
                 }
                 catch (Exception e) {
                     e.getMessage();
@@ -106,7 +104,7 @@ public class CypherFragment extends Fragment {
     }
 
     private String readText(String input) {
-        File file = new File(Environment.getExternalStorageDirectory(),input);
+        java.io.File file = new File(Environment.getExternalStorageDirectory(),input);
         StringBuilder text  = new StringBuilder();
         try {
 

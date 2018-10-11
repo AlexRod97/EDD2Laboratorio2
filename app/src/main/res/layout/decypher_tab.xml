@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvInput"
+        android:id="@+id/tViewInput"
         android:layout_width="330dp"
         android:layout_height="117dp"
         android:layout_alignParentTop="true"
@@ -18,21 +18,21 @@
         android:id="@+id/btnDescifrar"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tvInput"
+        android:layout_alignStart="@+id/tViewInput"
         android:layout_centerVertical="true"
         android:text="Descifrar" />
 
     <EditText
-        android:id="@+id/etNivel"
+        android:id="@+id/eTextNivel"
         android:layout_width="138dp"
         android:layout_height="42dp"
-        android:layout_alignEnd="@+id/tvOutput"
+        android:layout_alignEnd="@+id/tViewOutput"
         android:layout_centerVertical="true"
         android:ems="10"
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/tvOutput"
+        android:id="@+id/tViewOutput"
         android:layout_width="323dp"
         android:layout_height="181dp"
         android:layout_alignParentBottom="true"
@@ -41,7 +41,7 @@
         android:text="TextView" />
 
     <Button
-        android:id="@+id/btnReadFile"
+        android:id="@+id/btnOpenFile"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

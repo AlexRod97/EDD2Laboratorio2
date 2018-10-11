@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.e.edd2laboratorio2.Classes.CifradoZigzag;
 import com.e.edd2laboratorio2.Fragments.CypherFragment;
+import com.e.edd2laboratorio2.Fragments.DecypherFragment;
 import com.e.edd2laboratorio2.Fragments.SectionsPageAdapter;
 
 import java.io.BufferedReader;
@@ -28,7 +29,7 @@ import java.io.IOException;
 
 public class Zigzag extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Zigzag";
     private SectionsPageAdapter mSectionsPageAdapter;
     private ViewPager mViewPager;
 
@@ -51,7 +52,7 @@ public class Zigzag extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new CypherFragment(), "Cifrar");
-      // adapter.addFragment(new Dec);
+        adapter.addFragment(new DecypherFragment(), "Descifrar");
         viewPager.setAdapter(adapter);
     }
 
