@@ -10,12 +10,13 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnZigzag, btnSdes, btnRsa;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnZigzag = findViewById(R.id.btnZigzag);
+        btnSdes = findViewById(R.id.btnSdes);
+
         btnZigzag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        btnSdes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Sdes = new Intent(MainActivity.this,Sdes.class);
+                startActivity(Sdes);
+            }
+        });
     }
 }

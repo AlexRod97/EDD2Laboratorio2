@@ -19,15 +19,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.e.edd2laboratorio2.Classes.CifradoZigzag;
+import com.e.edd2laboratorio2.Classes.SDES;
 import com.e.edd2laboratorio2.R;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class DecypherFragment extends Fragment {
-    private static final String TAG = "DecypherFragment";
+public class SdesDecypherFragment extends Fragment {
+    private static final String TAG = "SdesDecypherFragment";
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
     Button btnOpenFile, btnDescifrar;
@@ -35,14 +37,14 @@ public class DecypherFragment extends Fragment {
     EditText etNivel;
     String mainData,path;
     java.io.File File;
-    int nivel;
-    String name;
-    CifradoZigzag zigzag = new  CifradoZigzag();
+    int numLlave;
+    String name,line;
+    SDES sdes = new SDES();
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.decypher_tab, container, false);
-        btnOpenFile = (Button)view.findViewById(R.id.btnOpenFile);
-        btnDescifrar = (Button)view.findViewById(R.id.btnDescifrar);
+        View view = inflater.inflate(R.layout.sdes_decypher_tab, container, false);
+        btnOpenFile = (Button)view.findViewById(R.id.btnOpenFileSDES);
+        btnDescifrar = (Button)view.findViewById(R.id.btnDescifrarSDES);
         tvInput = (TextView)view.findViewById(R.id.tViewInputSDES);
         tvOutput = (TextView)view.findViewById(R.id.tViewOutputSDES);
         etNivel = (EditText)view.findViewById(R.id.eTextNivelSDES);
@@ -68,10 +70,32 @@ public class DecypherFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    nivel = Integer.valueOf(String.valueOf(etNivel.getText()));
-                    name = File.getName();
-                    name = name.substring(0,name.indexOf("."));
-                    tvOutput.setText(zigzag.Descifrar(mainData,nivel));
+                    numLlave = Integer.valueOf(String.valueOf(etNivel.getText()));
+                    StringBuilder finalResult = new StringBuilder();
+                    if( numLlave < 1024) {
+                        name = File.getName();
+                        name = name.substring(0,name.indexOf("."));
+                        sdes.getKeys(String.valueOf(numLlave));
+                        int count = 0;
+                        int size = line.length();
+                        for(int i =0; i < size-1; i ++) {
+                            StringBuilder letter = new StringBuilder();
+                            for (int j = 0; j < 8; j++) {
+                                letter.append(line.charAt(count));
+                                count++;
+                            }
+                            int decimal = Integer.parseInt(sdes.Decypher(letter.toString()),2);
+                            String letra = String.valueOf((char)decimal);
+                            finalResult.append(letra);
+                            decimal = 0;
+                            tvOutput.setText(finalResult.toString());
+                        }
+
+                    }
+                    else {
+                        //Mensaje de error
+                    }
+
                 }
                 catch (Exception e) {
                     e.getMessage();
@@ -104,22 +128,23 @@ public class DecypherFragment extends Fragment {
     }
 
     private String readText(String input) {
-        java.io.File file = new File(Environment.getExternalStorageDirectory(),input);
-        StringBuilder text  = new StringBuilder();
+        File file = new File(Environment.getExternalStorageDirectory(),input);
         try {
 
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-            while((line = br.readLine()) != null) {
-                text.append(line);
-            }
-            br.close();
+            FileInputStream fileStream = new FileInputStream(file);
+            byte[] values = new byte[(int)file.length()];
+            fileStream.read(values);
+            fileStream.close();
+            String content = new String(values,"UTF-8");
+
+            line = content;
             File = file;
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-        return text.toString();
+        return line;
     }
 
 
