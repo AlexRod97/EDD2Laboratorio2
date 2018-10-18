@@ -7,3 +7,7 @@ Aplicación en android studio para métodos de cifrado
 3. La ventana de navegación permite hacer "swipe" hacia la izquierda pada elegir entre cifrar o descifrar 
 4. Al cifrar se genera un archivo <nombreDelArchivoLeido>_cifrado.txt que se almacena en la carpeta raiz del dispositivo
 5. Los resultados siempre se muestran dentro de la app
+
+### SDES (Parte 2)
+Aplicación contiene dentro de la misma rama Zigzag el código para este cifrado
+Uso es igual que el de la parte 1 
