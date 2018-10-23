@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btnZigzag = findViewById(R.id.btnZigzag);
         btnSdes = findViewById(R.id.btnSdes);
+        btnRsa = findViewById(R.id.btnRsa);
 
         btnZigzag.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,5 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(Sdes);
             }
         });
+
+        btnRsa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rsa = new Intent(MainActivity.this,Rsa.class);
+                startActivity(rsa);
+            }
+        });
+
     }
 }

@@ -6,35 +6,35 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tViewInputSDES"
+        android:id="@+id/tViewInputRSA"
         android:layout_width="329dp"
         android:layout_height="68dp"
-        android:layout_alignEnd="@+id/etNivelSDES"
+        android:layout_alignEnd="@+id/etP"
         android:layout_alignParentTop="true"
         android:layout_marginTop="139dp"
         android:layout_marginEnd="-6dp"
         android:text="TextView" />
 
     <Button
-        android:id="@+id/btnCifrarSDES"
+        android:id="@+id/btnCifrarRSA"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/etNivelSDES"
-        android:layout_alignStart="@+id/tViewInputSDES"
+        android:layout_alignBottom="@+id/etP"
+        android:layout_alignStart="@+id/tViewInputRSA"
         android:text="Cifrar" />
 
     <EditText
-        android:id="@+id/etNivelSDES"
+        android:id="@+id/etP"
         android:layout_width="138dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tViewOutputSDES"
+        android:layout_alignEnd="@+id/tViewOutputRSA"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="209dp"
         android:ems="10"
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/tViewOutputSDES"
+        android:id="@+id/tViewOutputRSA"
         android:layout_width="323dp"
         android:layout_height="181dp"
         android:layout_alignParentBottom="true"
@@ -52,10 +52,10 @@
         android:text="Buscar documento" />
 
     <TextView
-        android:id="@+id/lblLlave"
+        android:id="@+id/lblP"
         android:layout_width="137dp"
         android:layout_height="30dp"
-        android:layout_above="@+id/btnCifrarSDES"
-        android:layout_alignStart="@+id/etNivelSDES"
+        android:layout_above="@+id/btnCifrarRSA"
+        android:layout_alignStart="@+id/etP"
         android:text="Llave para cifrar:" />
 </RelativeLayout>

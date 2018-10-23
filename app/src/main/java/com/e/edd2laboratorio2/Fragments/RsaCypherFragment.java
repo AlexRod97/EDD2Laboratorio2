@@ -27,27 +27,28 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class RsaCypherFragment extends Fragment {
-    private static final String TAG = "CypherFragment";
+    private static final String TAG = "RSACypherFragment";
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
     Button btnOpenFile, btnCifrar;
     TextView tvInput, tvOutput;
-    EditText etNivel;
+    EditText etP, etQ;
     String mainData,path;
     java.io.File File;
-    int nivel;
+    int p,q;
     String name;
     CifradoZigzag zigzag = new  CifradoZigzag();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.cypher_tab, container, false);
-        btnOpenFile = (Button)view.findViewById(R.id.btnReadFile);
-        btnCifrar = (Button)view.findViewById(R.id.btnDescifrar);
-        tvInput = (TextView)view.findViewById(R.id.tViewInputSDES);
-        tvOutput = (TextView)view.findViewById(R.id.tViewOutputSDES);
-        etNivel = (EditText)view.findViewById(R.id.etNivelSDES);
+        View view = inflater.inflate(R.layout.rsa_cypher_tab, container, false);
+        btnOpenFile = (Button)view.findViewById(R.id.btnReadFileRSA);
+        btnCifrar = (Button)view.findViewById(R.id.btnCifrarRSA);
+        tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
+        tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
+        etP = (EditText)view.findViewById(R.id.etP);
+        etQ = (EditText)view.findViewById(R.id.etQ);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
@@ -70,10 +71,11 @@ public class RsaCypherFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try {
-                    nivel = Integer.valueOf(String.valueOf(etNivel.getText()));
+                    p = Integer.valueOf(String.valueOf(etP.getText()));
+                    q = Integer.valueOf(String.valueOf(etQ.getText()));
                     name = File.getName();
                     name = name.substring(0,name.indexOf("."));
-                    tvOutput.setText(zigzag.Cifrar(mainData,nivel, name));
+                   // tvOutput.setText(zigzag.Cifrar(mainData,nivel, name));
                 }
                 catch (Exception e) {
                     e.getMessage();

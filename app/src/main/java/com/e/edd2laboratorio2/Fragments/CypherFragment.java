@@ -45,9 +45,9 @@ public class CypherFragment extends Fragment {
         View view = inflater.inflate(R.layout.cypher_tab, container, false);
         btnOpenFile = (Button)view.findViewById(R.id.btnReadFile);
         btnCifrar = (Button)view.findViewById(R.id.btnDescifrar);
-        tvInput = (TextView)view.findViewById(R.id.tViewInputSDES);
-        tvOutput = (TextView)view.findViewById(R.id.tViewOutputSDES);
-        etNivel = (EditText)view.findViewById(R.id.etNivelSDES);
+        tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
+        tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
+        etNivel = (EditText)view.findViewById(R.id.etP);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 

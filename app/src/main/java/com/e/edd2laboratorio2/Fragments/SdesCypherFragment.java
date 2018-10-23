@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +18,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.e.edd2laboratorio2.Classes.SDES;
 import com.e.edd2laboratorio2.R;
-import com.e.edd2laboratorio2.Sdes;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -50,10 +47,10 @@ public class SdesCypherFragment extends Fragment {
         View view = inflater.inflate(R.layout.sdes_cypher_tab, container, false);
 
         btnOpenFile = (Button)view.findViewById(R.id.btnReadFileSDES);
-        btnCifrar = (Button)view.findViewById(R.id.btnCifrarSDES);
-        tvInput = (TextView)view.findViewById(R.id.tViewInputSDES);
-        tvOutput = (TextView)view.findViewById(R.id.tViewOutputSDES);
-        etNivel = (EditText)view.findViewById(R.id.etNivelSDES);
+        btnCifrar = (Button)view.findViewById(R.id.btnCifrarRSA);
+        tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
+        tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
+        etNivel = (EditText)view.findViewById(R.id.etP);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 

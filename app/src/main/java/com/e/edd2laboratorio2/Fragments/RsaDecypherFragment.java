@@ -27,7 +27,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class RsaDecypherFragment extends Fragment {
-    private static final String TAG = "DecypherFragment";
+    private static final String TAG = "RSADecypherFragment";
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
     Button btnOpenFile, btnDescifrar;
@@ -40,11 +40,11 @@ public class RsaDecypherFragment extends Fragment {
     CifradoZigzag zigzag = new  CifradoZigzag();
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.decypher_tab, container, false);
+        View view = inflater.inflate(R.layout.rsa_decypher_tab, container, false);
         btnOpenFile = (Button)view.findViewById(R.id.btnOpenFile);
         btnDescifrar = (Button)view.findViewById(R.id.btnDescifrar);
-        tvInput = (TextView)view.findViewById(R.id.tViewInputSDES);
-        tvOutput = (TextView)view.findViewById(R.id.tViewOutputSDES);
+        tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
+        tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
         etNivel = (EditText)view.findViewById(R.id.eTextNivelSDES);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {

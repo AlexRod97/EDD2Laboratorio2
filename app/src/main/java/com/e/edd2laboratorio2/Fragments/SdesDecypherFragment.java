@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.e.edd2laboratorio2.Classes.CifradoZigzag;
 import com.e.edd2laboratorio2.Classes.SDES;
 import com.e.edd2laboratorio2.R;
 
@@ -45,8 +44,8 @@ public class SdesDecypherFragment extends Fragment {
         View view = inflater.inflate(R.layout.sdes_decypher_tab, container, false);
         btnOpenFile = (Button)view.findViewById(R.id.btnOpenFileSDES);
         btnDescifrar = (Button)view.findViewById(R.id.btnDescifrarSDES);
-        tvInput = (TextView)view.findViewById(R.id.tViewInputSDES);
-        tvOutput = (TextView)view.findViewById(R.id.tViewOutputSDES);
+        tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
+        tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
         etNivel = (EditText)view.findViewById(R.id.eTextNivelSDES);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
