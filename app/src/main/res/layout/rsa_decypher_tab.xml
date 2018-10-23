@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tViewInputSDES"
+        android:layout_width="331dp"
+        android:layout_height="70dp"
+        android:layout_alignEnd="@+id/eTextNivelSDES"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="132dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnDescifrar"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tViewOutputSDES"
+        android:layout_marginBottom="214dp"
+        android:text="Descifrar" />
+
+    <EditText
+        android:id="@+id/eTextNivelSDES"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_alignEnd="@+id/tViewOutputSDES"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="206dp"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tViewOutputSDES"
+        android:layout_width="323dp"
+        android:layout_height="181dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnOpenFile"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="Buscar documento" />
+
+    <TextView
+        android:id="@+id/lblLlave"
+        android:layout_width="139dp"
+        android:layout_height="29dp"
+        android:layout_above="@+id/btnDescifrar"
+        android:layout_alignStart="@+id/eTextNivelSDES"
+        android:text="Llave para cifrar:" />
+</RelativeLayout>
