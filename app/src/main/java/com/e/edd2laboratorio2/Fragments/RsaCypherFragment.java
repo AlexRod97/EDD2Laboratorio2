@@ -19,26 +19,31 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.e.edd2laboratorio2.Classes.CifradoZigzag;
+import com.e.edd2laboratorio2.Classes.RSA;
 import com.e.edd2laboratorio2.R;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RsaCypherFragment extends Fragment {
     private static final String TAG = "RSACypherFragment";
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
-    Button btnOpenFile,btnOpenFile2, btnLlaves, btnCifrar;
+    Button btnOpenFile,btnOpenFile2, btnLlaves,btnLeerLlave, btnCifrar;
     TextView tvInput, tvOutput;
     EditText etP, etQ;
     String mainData,path;
     java.io.File File;
     int p,q;
     String name;
-    CifradoZigzag zigzag = new  CifradoZigzag();
-
+    RSA rsa = new RSA();
+    String[] split;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,7 +58,7 @@ public class RsaCypherFragment extends Fragment {
         etP = (EditText)view.findViewById(R.id.etP);
         etQ = (EditText)view.findViewById(R.id.etQ);
         btnLlaves = (Button)view.findViewById(R.id.btnLlaves);
-
+        btnLeerLlave = (Button)view.findViewById(R.id.btnOperarLlaveP);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             requestPermissions(new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST_STORAGE);
@@ -71,6 +76,13 @@ public class RsaCypherFragment extends Fragment {
             }
         });
 
+        btnLeerLlave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readKeys(path);
+            }
+        });
+
         btnOpenFile2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,17 +90,21 @@ public class RsaCypherFragment extends Fragment {
             }
         });
 
+        btnLlaves.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                p = Integer.valueOf(String.valueOf(etP.getText()));
+                q = Integer.valueOf(String.valueOf(etQ.getText()));
 
+                rsa.generarLlaves(p,q);
+            }
+        });
 
         btnCifrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    p = Integer.valueOf(String.valueOf(etP.getText()));
-                    q = Integer.valueOf(String.valueOf(etQ.getText()));
-                    name = File.getName();
-                    name = name.substring(0,name.indexOf("."));
-                   // tvOutput.setText(zigzag.Cifrar(mainData,nivel, name));
+                   readText(path);
                 }
                 catch (Exception e) {
                     e.getMessage();
@@ -114,15 +130,14 @@ public class RsaCypherFragment extends Fragment {
                 Uri uri = data.getData();
                 path = uri.getPath();
                 path = path.substring(path.indexOf(":")+1);
-                mainData = readText(path);
-                tvInput.setText(mainData);
             }
         }
     }
 
-    private String readText(String input) {
+    private String[] readKeys(String input) {
         File file = new File(Environment.getExternalStorageDirectory(),input);
         StringBuilder text  = new StringBuilder();
+        String result = "";
         try {
 
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -136,8 +151,38 @@ public class RsaCypherFragment extends Fragment {
         catch (IOException e) {
             e.printStackTrace();
         }
+        result = text.toString();
+        split = result.split("\\,");
+        return split;
+    }
+
+    private String readText(String input) {
+        File file = new File(Environment.getExternalStorageDirectory(),input);
+        StringBuilder text  = new StringBuilder();
+        String result = "";
+        String name = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            FileInputStream fileStream = new FileInputStream(file);
+            name = file.getName();
+            name = name.substring(0,name.indexOf("."));
+
+            int element;
+            while ((element = br.read()) != -1) {
+                text.append(rsa.Cifrar(element,Integer.valueOf(split[0]), Integer.valueOf(split[1]),name));
+            }
+            result = text.toString();
+            br.close();
+            File = file;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
         return text.toString();
     }
+
+
 
 
 }

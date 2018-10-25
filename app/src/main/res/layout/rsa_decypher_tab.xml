@@ -49,11 +49,11 @@
         android:text="Buscar documento" />
 
     <Button
-        android:id="@+id/btnLlave"
+        android:id="@+id/btnLlavePriv"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tViewInputRSA"
         android:layout_centerVertical="true"
-        android:text="LLave" />
+        android:text="Leer llave" />
 
 </RelativeLayout>

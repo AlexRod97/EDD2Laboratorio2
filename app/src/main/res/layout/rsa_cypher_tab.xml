@@ -8,19 +8,17 @@
     <TextView
         android:id="@+id/tViewInputRSA"
         android:layout_width="329dp"
-        android:layout_height="81dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="54dp"
+        android:layout_above="@+id/btnCifrarRSA"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="109dp"
         android:text="TextView" />
 
     <Button
         android:id="@+id/btnCifrarRSA"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btnLlaves"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="165dp"
+        android:layout_above="@+id/tViewOutputRSA"
+        android:layout_centerHorizontal="true"
         android:text="Cifrar" />
 
     <EditText
@@ -35,7 +33,7 @@
     <TextView
         android:id="@+id/tViewOutputRSA"
         android:layout_width="323dp"
-        android:layout_height="124dp"
+        android:layout_height="84dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
@@ -46,16 +44,16 @@
         android:layout_width="152dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_alignStart="@+id/tViewInputRSA"
+        android:layout_marginTop="132dp"
         android:text="Buscar documento" />
 
     <Button
         android:id="@+id/btnReadFileRSA2"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tViewOutputRSA"
-        android:layout_alignTop="@+id/btnCifrarRSA"
+        android:layout_above="@+id/tViewInputRSA"
+        android:layout_centerHorizontal="true"
         android:text="Buscar documento" />
 
     <TextView
@@ -79,7 +77,8 @@
         android:id="@+id/etQ"
         android:layout_width="104dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignTop="@+id/etP"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="number" />
 
@@ -90,4 +89,12 @@
         android:layout_alignTop="@+id/etP"
         android:layout_toEndOf="@+id/etQ"
         android:text="Crear llaves" />
+
+    <Button
+        android:id="@+id/btnOperarLlaveP"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnReadFileRSA"
+        android:layout_alignEnd="@+id/tViewOutputRSA"
+        android:text="Leer llave" />
 </RelativeLayout>
