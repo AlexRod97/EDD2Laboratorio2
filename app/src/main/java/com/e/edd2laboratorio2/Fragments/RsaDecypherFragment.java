@@ -30,7 +30,7 @@ public class RsaDecypherFragment extends Fragment {
     private static final String TAG = "RSADecypherFragment";
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
-    Button btnOpenFile, btnDescifrar;
+    Button btnOpenFile,btnOpenFile2, btnLlave, btnDescifrar;
     TextView tvInput, tvOutput;
     EditText etNivel;
     String mainData,path;
@@ -41,11 +41,14 @@ public class RsaDecypherFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.rsa_decypher_tab, container, false);
-        btnOpenFile = (Button)view.findViewById(R.id.btnOpenFile);
-        btnDescifrar = (Button)view.findViewById(R.id.btnDescifrar);
+
+        btnOpenFile = (Button)view.findViewById(R.id.btnOpenFileRsa);
+        btnOpenFile2 = (Button)view.findViewById(R.id.btnOpenFileRsa2);
+
+        btnDescifrar = (Button)view.findViewById(R.id.btnDescifrarRSA);
         tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
         tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
-        etNivel = (EditText)view.findViewById(R.id.eTextNivelSDES);
+        btnLlave = (Button)view.findViewById(R.id.btnLlave);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
@@ -58,6 +61,13 @@ public class RsaDecypherFragment extends Fragment {
         }
 
         btnOpenFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fileSearch();
+            }
+        });
+
+        btnOpenFile2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fileSearch();

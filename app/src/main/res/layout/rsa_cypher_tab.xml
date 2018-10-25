@@ -18,9 +18,9 @@
         android:id="@+id/btnCifrarRSA"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnLlaves"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/tViewInputRSA"
-        android:layout_marginBottom="170dp"
+        android:layout_marginBottom="165dp"
         android:text="Cifrar" />
 
     <EditText
@@ -48,6 +48,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
+        android:text="Buscar documento" />
+
+    <Button
+        android:id="@+id/btnReadFileRSA2"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tViewOutputRSA"
+        android:layout_alignTop="@+id/btnCifrarRSA"
         android:text="Buscar documento" />
 
     <TextView

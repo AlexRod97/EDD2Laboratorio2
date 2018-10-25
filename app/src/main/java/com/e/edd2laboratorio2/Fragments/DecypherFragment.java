@@ -42,7 +42,7 @@ public class DecypherFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.decypher_tab, container, false);
         btnOpenFile = (Button)view.findViewById(R.id.btnOpenFile);
-        btnDescifrar = (Button)view.findViewById(R.id.btnDescifrar);
+        btnDescifrar = (Button)view.findViewById(R.id.btnDescifrarRSA);
         tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
         tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
         etNivel = (EditText)view.findViewById(R.id.eTextNivelSDES);

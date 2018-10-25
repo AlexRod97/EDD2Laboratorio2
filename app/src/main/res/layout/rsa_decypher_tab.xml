@@ -11,16 +11,16 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="94dp"
+        android:layout_marginTop="121dp"
         android:text="TextView" />
 
     <Button
-        android:id="@+id/btnDescifrar"
+        android:id="@+id/btnDescifrarRSA"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="38dp"
+        android:layout_alignEnd="@+id/tViewInputRSA"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
         android:text="Descifrar" />
 
     <TextView
@@ -33,19 +33,26 @@
         android:text="TextView" />
 
     <Button
-        android:id="@+id/btnOpenFile"
+        android:id="@+id/btnOpenFileRsa"
         android:layout_width="152dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_alignStart="@+id/tViewInputRSA"
+        android:layout_centerVertical="true"
+        android:text="Buscar documento" />
+
+    <Button
+        android:id="@+id/btnOpenFileRsa2"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnDescifrarRSA"
+        android:layout_alignStart="@+id/tViewInputRSA"
         android:text="Buscar documento" />
 
     <Button
         android:id="@+id/btnLlave"
         android:layout_width="136dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tViewInputRSA"
+        android:layout_alignEnd="@+id/tViewInputRSA"
         android:layout_centerVertical="true"
         android:text="LLave" />
 

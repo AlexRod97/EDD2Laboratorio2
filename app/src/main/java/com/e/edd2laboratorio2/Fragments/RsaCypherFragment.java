@@ -30,7 +30,7 @@ public class RsaCypherFragment extends Fragment {
     private static final String TAG = "RSACypherFragment";
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
-    Button btnOpenFile, btnCifrar;
+    Button btnOpenFile,btnOpenFile2, btnLlaves, btnCifrar;
     TextView tvInput, tvOutput;
     EditText etP, etQ;
     String mainData,path;
@@ -43,12 +43,16 @@ public class RsaCypherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.rsa_cypher_tab, container, false);
+
         btnOpenFile = (Button)view.findViewById(R.id.btnReadFileRSA);
+        btnOpenFile2 = (Button)view.findViewById(R.id.btnReadFileRSA2);
+
         btnCifrar = (Button)view.findViewById(R.id.btnCifrarRSA);
         tvInput = (TextView)view.findViewById(R.id.tViewInputRSA);
         tvOutput = (TextView)view.findViewById(R.id.tViewOutputRSA);
         etP = (EditText)view.findViewById(R.id.etP);
         etQ = (EditText)view.findViewById(R.id.etQ);
+        btnLlaves = (Button)view.findViewById(R.id.btnLlaves);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
@@ -66,6 +70,15 @@ public class RsaCypherFragment extends Fragment {
                 fileSearch();
             }
         });
+
+        btnOpenFile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fileSearch();
+            }
+        });
+
+
 
         btnCifrar.setOnClickListener(new View.OnClickListener() {
             @Override
