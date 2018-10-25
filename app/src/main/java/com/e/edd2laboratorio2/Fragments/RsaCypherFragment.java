@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.e.edd2laboratorio2.Classes.CifradoZigzag;
 import com.e.edd2laboratorio2.Classes.RSA;
@@ -30,6 +31,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static android.widget.Toast.makeText;
 
 public class RsaCypherFragment extends Fragment {
     private static final String TAG = "RSACypherFragment";
@@ -95,8 +98,17 @@ public class RsaCypherFragment extends Fragment {
             public void onClick(View v) {
                 p = Integer.valueOf(String.valueOf(etP.getText()));
                 q = Integer.valueOf(String.valueOf(etQ.getText()));
+                boolean resultP = rsa.esPrimo(p);
+                boolean resultQ = rsa.esPrimo(q);
 
-                rsa.generarLlaves(p,q);
+                if(resultP & resultQ) {
+                    rsa.generarLlaves(p,q);
+                }
+                else {
+                     //makeText(this, "Error al almacenar el archivo", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
