@@ -26,3 +26,4 @@ Proceso para descifrar:
 ####Limitaciones: 
 1. No muestra mensajes de confirmación al cifrar o descifrar
 2. Se valída que los números ingresados sean primos pero no notifica si no son primos aunque no opera en caso se diera que no son primos 
+3. Probar con númeross primos que sean grandes, ejemplo: 11 y 19 funciona 
