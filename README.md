@@ -11,6 +11,7 @@ Aplicación en android studio para métodos de cifrado
 ### SDES (Parte 2)
 Aplicación contiene dentro de la misma rama Zigzag el código para este cifrado
 Uso es igual que el de la parte 1 
+El proceso de cifrado y descifrado es tardado pero sí cumple el procedimiento.
 
 ### RSA (Parte 3)
 Aplicación en la rama RSA 
